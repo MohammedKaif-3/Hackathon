@@ -5,12 +5,14 @@
   text-align: center;
   max-height: 80px;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 0.9rem;
   box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.1);
-  margin-top: auto; /* Pushes footer down when content is less */
 }
 
 .footer-container {
@@ -26,6 +28,9 @@
   flex: 1;
   min-width: 200px;
   text-align: center;
+}
+.footer-right h4{
+  font-size: small;
 }
 
 .footer h3 {
@@ -86,20 +91,4 @@
   .footer-left, .footer-center, .footer-right {
     margin: 5px 0;
   }
-}
-
-/* Ensuring Footer Stays at Bottom When Content is Less */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-#root, .main-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensures footer pushes down */
-}
-
-.content {
-  flex: 1; /* Pushes footer to bottom */
 }
