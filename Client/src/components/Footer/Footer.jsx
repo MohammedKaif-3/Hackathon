@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer-container">
         {/* Left Section - Logo & Copyright */}
         <div className="footer-left">
-          <h3>MyWebsite</h3>
+          <h3>Rajiv Gandhi University of Knowledge - Andhra Pradesh</h3>
           <p>&copy; {new Date().getFullYear()} MyWebsite. All rights reserved.</p>
         </div>
 
