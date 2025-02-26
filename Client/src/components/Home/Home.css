@@ -10,7 +10,7 @@ div p{
     font-weight: 300;
 }
 
-div img{
+#hero{
     position: absolute;
     top: 45%;
     width: 750px;
