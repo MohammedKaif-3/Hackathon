@@ -6,13 +6,14 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/">University Hub</Link>
+        <Link to="/"><img src="https://www.rguktrkv.ac.in/images/Logonew.png"></img>RGUKT</Link>
       </div>
       <ul className="navbar-links">
+        <li><Link to="/">Home</Link></li>
         <li><Link to="/forum">Forum</Link></li>
         <li><Link to="/clubs">Clubs</Link></li>
         <li><Link to="/career">Career</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
+        <li><Link to="/login">Login</Link></li>
       </ul>
     </nav>
   );
