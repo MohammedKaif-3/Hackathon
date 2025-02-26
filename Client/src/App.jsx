@@ -6,7 +6,6 @@ import Clubs from "./components/Clubs/Clubs";
 import Career from "./components/Career/Career";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
-import Card from "./components/Card/Card";
 
 const App = () => {
   return (

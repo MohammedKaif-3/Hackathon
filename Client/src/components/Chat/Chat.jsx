@@ -1,72 +1,48 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import io from "socket.io-client";
-import "./Chat.css";
 
-const socket = io("http://localhost:5000");
+const socket = io("http://localhost:5000"); // Change to your backend URL if hosted
 
 const Chat = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [room, setRoom] = useState("");
-  const [joined, setJoined] = useState(false);
+  const room = "general"; // Define your chatroom
 
   useEffect(() => {
+    socket.emit("joinRoom", room);
+
     socket.on("receiveMessage", (msg) => {
       setMessages((prev) => [...prev, msg]);
     });
 
     return () => {
-      socket.off("receiveMessage");
+      socket.disconnect();
     };
   }, []);
 
-  const joinRoom = () => {
-    if (room.trim()) {
-      socket.emit("joinRoom", room);
-      setJoined(true);
-      setMessages([]); // Clear previous messages when switching rooms
-    }
-  };
-
   const sendMessage = () => {
-    if (message.trim() && room) {
+    if (message.trim() !== "") {
       socket.emit("sendMessage", { room, message });
       setMessage("");
     }
   };
 
   return (
-    <div className="chat-container">
-      {!joined ? (
-        <div className="join-room">
-          <h2>Select Chatroom</h2>
-          <input
-            type="text"
-            placeholder="Enter room name..."
-            value={room}
-            onChange={(e) => setRoom(e.target.value)}
-          />
-          <button onClick={joinRoom}>Join Room</button>
-        </div>
-      ) : (
-        <div>
-          <h2>Chatroom: {room}</h2>
-          <div className="messages">
-            {messages.map((msg, index) => (
-              <p key={index} className="message">{msg}</p>
-            ))}
-          </div>
-          <div className="input-area">
-            <input
-              type="text"
-              placeholder="Type a message..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <button onClick={sendMessage}>Send</button>
-          </div>
-        </div>
-      )}
+    <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
+      <h2>Chat Room</h2>
+      <div style={{ border: "1px solid #ccc", padding: "10px", height: "200px", overflowY: "auto" }}>
+        {messages.map((msg, index) => (
+          <p key={index}><strong>{msg.sender}:</strong> {msg.message}</p>
+        ))}
+      </div>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Type your message..."
+        style={{ width: "80%", padding: "5px", marginTop: "10px" }}
+      />
+      <button onClick={sendMessage} style={{ padding: "5px 10px", marginLeft: "10px" }}>Send</button>
     </div>
   );
 };
