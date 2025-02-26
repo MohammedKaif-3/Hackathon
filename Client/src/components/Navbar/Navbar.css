@@ -28,6 +28,7 @@
   
   .navbar-links li {
     display: inline;
+    margin: 0 30px;
   }
   
   .navbar-links a {
@@ -37,6 +38,6 @@
   }
   
   .navbar-links a:hover {
-    text-decoration: underline;
+    color: rgb(172, 164, 164);
   }
   
