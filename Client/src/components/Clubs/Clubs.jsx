@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 const Clubs = () => {
   const clubs = ["Music Club", "Tech Club", "Sports Club"];
@@ -14,6 +15,7 @@ const Clubs = () => {
           </li>
         ))}
       </ul>
+      <Footer/>
     </div>
   );
 };

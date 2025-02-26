@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Career.css";
+import Footer from "../Footer/Footer";
 
 const Career = () => {
   const [jobs, setJobs] = useState([]);
@@ -61,6 +62,7 @@ const Career = () => {
           ))}
         </ul>
       )}
+      <Footer/>
     </div>
   );
 };
